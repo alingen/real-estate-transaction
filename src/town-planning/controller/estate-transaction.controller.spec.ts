@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { EstateTransactionController } from './estate-transaction.controller';
-import { GetRealEstateTransactionUseCase } from '../usercase/get-real-estate-transaction.usecase';
+import { GetRealEstateTransactionUseCase } from '../usecase/get-real-estate-transaction.usecase';
 
 describe('EstateTransactionController', () => {
   let controller: EstateTransactionController;
