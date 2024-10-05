@@ -1,5 +1,5 @@
 import { Controller, Get, Query, BadRequestException } from '@nestjs/common';
-import { GetRealEstateTransactionUseCase } from '../usercase/get-real-estate-transaction.usecase';
+import { GetRealEstateTransactionUseCase } from '../usecase/get-real-estate-transaction.usecase';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
 import { RealEstateQueryDto } from '../dto/real-estate-query.dto';
 
