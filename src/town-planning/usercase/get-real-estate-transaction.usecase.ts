@@ -1,10 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { TownPlanningService } from '../service/town-planning.service';
+import { Injectable, Inject } from '@nestjs/common';
+import { RealEstateRepositoryInterface } from '../repository/real-estate.repository.interface';
 import { RealEstateQueryDto } from '../dto/real-estate-query.dto';
 
 @Injectable()
 export class GetRealEstateTransactionUseCase {
-  constructor(private readonly townPlanningService: TownPlanningService) {}
+  constructor(
+    @Inject('RealEstateRepositoryInterface')
+    private readonly realEstateRepository: RealEstateRepositoryInterface,
+  ) {}
 
   // UseCase のエントリーポイント
   async execute(query: RealEstateQueryDto): Promise<any> {
@@ -12,7 +15,7 @@ export class GetRealEstateTransactionUseCase {
     const { year, prefCode, cityCode, displayType } = query;
 
     // Service 層を呼び出してデータを取得
-    return await this.townPlanningService.getRealEstateData(
+    return await this.realEstateRepository.getTransactionData(
       prefCode.toString(),
       cityCode,
       year.toString(),

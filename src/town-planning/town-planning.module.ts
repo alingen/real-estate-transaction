@@ -4,10 +4,16 @@ import { ConfigModule } from '@nestjs/config';
 import { EstateTransactionController } from './controller/estate-transaction.controller';
 import { TownPlanningService } from './service/town-planning.service';
 import { GetRealEstateTransactionUseCase } from './usercase/get-real-estate-transaction.usecase';
+import { RealEstateRepository } from './infrastructure/real-estete.repository';
 
 @Module({
   imports: [HttpModule, ConfigModule],
   controllers: [EstateTransactionController],
-  providers: [TownPlanningService, GetRealEstateTransactionUseCase],
+  providers: [
+    TownPlanningService,
+    GetRealEstateTransactionUseCase,
+    RealEstateRepository,
+    { provide: 'RealEstateRepositoryInterface', useClass: RealEstateRepository },
+  ],
 })
 export class TownPlanningModule {}
